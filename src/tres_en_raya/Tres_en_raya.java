@@ -17,12 +17,15 @@ public class Tres_en_raya {
 				{"-","-","-"},
 				{"-","-","-"}};
 		int Random = 0;
+		int contPos = 0;
 		int fila = 0;
 		int columna = 0;
-		int[] insert = new int[columna];
+		int[][] insert = new int[fila][columna];
 		
 		Scanner x = new Scanner(System.in);
 		Random r = new Random();
+		
+		boolean jugar = true;
 		
 		//INSERTAR LOS NOPMBRES DE LOS JUGADORES 
 		for (int i = 0; i < nombres.length; i++) {
@@ -31,24 +34,47 @@ public class Tres_en_raya {
 		}
 		
 		//MOSTRAR LOS NOMBRES DE LOS JUGADORES 
-		//for (int i = 0; i < nombres.length; i++) {
-			//System.out.println(nombres[i]);
-		//}
-		
-		//ESTE RANDOM GENERA UN NUMERO DEL 1 AL 2
-		Random = r.nextInt(2)+1;
-		
-		if (Random == 1){
-			System.out.print("En que columna quieres poner la ficha, " + nombres[0] + ": ");
-			insert[columna] = x.nextInt();
-		}else {
-			System.out.print("En que columna quieres poner la ficha, " + nombres[1] + ": ");
-			insert[columna] = x.nextInt();
+		System.out.println("__________________________________________");
+		System.out.println(" ");
+		System.out.println("Los nombres elegidos són: ");
+		for (int i = 0; i < nombres.length; i++) {
+			System.out.println("Jugador "+ (i + 1) + ": " + nombres[i]);
 		}
+		System.out.println("__________________________________________");
 		
-		while (true) {
+		//REINICIAR EL TABLERO 
+		while(jugar) {
+			for (int i = 0; i < Posicion.length; i++) {
+				for (int j = 0; j < Posicion.length; j++) {
+					Posicion[i][j] = "-";
+				}
+			}
+			
+			for (int i = 0; i < Posicion.length; i++) {
+				for (int j = 0; j < Posicion[i].length; j++) {
+					System.out.print((contPos + 1) + " " +Posicion[i][j] + " ");
+					contPos++;
+				}System.out.println();
+			}
+			
+			//ESTE RANDOM GENERA UN NUMERO DEL 1 AL 2
+			Random = r.nextInt(2)+1;
+			
+			if (Random == 1){
+				System.out.print("En que posición quieres poner la ficha, jugador: " + nombres[0] + ": ");
+				insert[fila][columna] = x.nextInt();
+			}else {
+				System.out.print("En que posición quieres poner la ficha, jugador: " + nombres[1] + ": ");
+				insert[fila][columna] = x.nextInt();
+			}
+			
+			
 			
 		}
+		
+		
+		
+		
 		
 		
 	}
