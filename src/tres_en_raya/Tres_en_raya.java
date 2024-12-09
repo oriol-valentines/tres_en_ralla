@@ -65,10 +65,19 @@ public class Tres_en_raya {
 					//PEDIR LA POSICION
 					System.out.println("Es el turno de: " + nombres[turno]);
 					System.out.print("Introduce la fila (del 1 al 3): ");
-					fila = x.nextInt();
+					fila = x.nextInt() -1; //SE AGREGA EL -1 YA QUE TENEMOS LOS VALORES DEL 0 AL 2, SI PONEMOS UN 2 HACE EL SIGUIENTE PROCEDIMIENTO (2 -1 = 1) ENTONCES ACCEDE A LA POSICION 1, SE HACE ESO YA QUE NO TENEMOS LA POSICION 3.
 					System.out.print("Introduce la columna (del 1 al 3): ");
-					columna = x.nextInt();
+					columna = x.nextInt() -1;
+					
+					//VERIFICAR LAS POSSICIONES
+					if (fila >= 0 && fila < 3 && columna >= 0 && columna < 3 && Posicion[fila][columna].equals("-")) {
+						Posicion[fila][columna] = "XO".charAt(turno) + "";
+	                    posicionValida = true;
+	                } else {
+	                	System.out.println("Posición inválida, intenta de nuevo.");
+	                }	
 				}
+				
 			}
 		}
 		
