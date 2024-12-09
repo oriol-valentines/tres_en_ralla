@@ -58,6 +58,17 @@ public class Tres_en_raya {
 					}
 					System.out.println();
 				}
+				
+				boolean posicionValida = false;
+				
+				while(!posicionValida) {
+					//PEDIR LA POSICION
+					System.out.println("Es el turno de: " + nombres[turno]);
+					System.out.print("Introduce la fila (del 1 al 3): ");
+					fila = x.nextInt();
+					System.out.print("Introduce la columna (del 1 al 3): ");
+					columna = x.nextInt();
+				}
 			}
 		}
 		
