@@ -78,9 +78,67 @@ public class Tres_en_raya {
 	                }	
 				}
 				
+				// VERIFICAR SI HAY GANADOR O EMPATE
+				boolean ganador = false;
+
+				// VERIFICAR FILAS Y COLUMNAS
+				for (int i = 0; i < 3; i++) {
+				    if (Posicion[i][0].equals(Posicion[i][1]) && Posicion[i][1].equals(Posicion[i][2]) && !Posicion[i][0].equals("-")) {
+				        ganador = true;
+				    }
+				    if (Posicion[0][i].equals(Posicion[1][i]) && Posicion[1][i].equals(Posicion[2][i]) && !Posicion[0][i].equals("-")) {
+				        ganador = true;
+				    }
+				}
+
+				// VERIFICAR DIAGONALES
+				if (Posicion[0][0].equals(Posicion[1][1]) && Posicion[1][1].equals(Posicion[2][2]) && !Posicion[0][0].equals("-")) {
+				    ganador = true;
+				}
+				if (Posicion[0][2].equals(Posicion[1][1]) && Posicion[1][1].equals(Posicion[2][0]) && !Posicion[0][2].equals("-")) {
+				    ganador = true;
+				}
+
+				if (ganador) {
+				    System.out.println("¡" + nombres[turno] + " ha ganado!");
+				    partidaA = false;
+				} else {
+				    //MIRAR SI HAY EMPATE (ESTANDO EL TABLERO LLENO)
+				    boolean empate = true;
+				    for (int i = 0; i < 3; i++) {
+				        for (int j = 0; j < 3; j++) {
+				            if (Posicion[i][j].equals("-")) {
+				                empate = false;
+				                break;
+				            }
+				        }
+				        if (!empate) break; // SALIR SI HAY UNA CASILLA LLENA
+				    }
+
+				    if (empate) {
+				        System.out.println("¡Empate!");
+				        partidaA = false;
+				    } else {
+				        turno ^= 1; // ALTERNAR TURNO ENTRE JUGADOR 0 Y 1
+				    }
+				}
+				
 			}
+			//MOSTRAR EL TABLERO FINAL
+			System.out.println("Este es el tablero final:");
+			for (int i = 0; i < Posicion.length; i++) {
+				for (int j = 0; j < Posicion[i].length; j++) {
+					System.out.print(Posicion[i][j]);
+				}
+				System.out.println(" ");
+			}
+			// PREGUNTAR POR REVANCHA
+            System.out.print("¿Desean jugar una revancha? (S/N): ");
+            String respuesta = x.next().toUpperCase();
+            jugar = respuesta.equals("S");
+			
 		}
-		
+		System.out.println("¡Gracias por jugar!");
 		
 		
 		
